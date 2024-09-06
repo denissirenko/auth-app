@@ -3,8 +3,8 @@ import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/profile")({
   beforeLoad: ({ context }) => {
-    const { isLogged } = context.authentication;
-    if (!isLogged()) {
+    const { isAuthenticated } = context.authentication;
+    if (!isAuthenticated) {
       throw redirect({
         to: "/login",
       });

@@ -3,13 +3,12 @@ import { routeTree } from "./routeTree.gen";
 import { Theme } from "@radix-ui/themes";
 import { useAuth } from "../shared/hooks/useAuth";
 
-const router = createRouter({
-  routeTree,
-  context: { authentication: undefined! },
-});
-
 function App() {
   const authentication = useAuth();
+  const router = createRouter({
+    routeTree,
+    context: { authentication: undefined! },
+  });
 
   return (
     <Theme>

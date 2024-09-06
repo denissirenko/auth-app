@@ -34,7 +34,6 @@ const SignUpForm: React.FC = () => {
 
   const onSubmit = (data: { username: string; password: string }) => {
     const { username, password } = data;
-
     if (username === "admin" && password === "Test1234!") {
       setErrorMessage("");
       signIn();

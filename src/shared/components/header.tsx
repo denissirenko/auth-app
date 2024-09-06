@@ -3,13 +3,13 @@ import Container from "./container";
 import { useAuth } from "../hooks/useAuth";
 import { Avatar, Button } from "@radix-ui/themes";
 
-const { isLogged, signOut } = useAuth();
-
 const activeProps = {
   style: { textDecoration: "underline", color: "#3E63DD" },
 };
 
 export default function Header() {
+  const { isAuthenticated, signOut } = useAuth();
+
   return (
     <header>
       <Container>
@@ -28,7 +28,7 @@ export default function Header() {
           >
             About
           </Link>
-          {isLogged() ? (
+          {isAuthenticated ? (
             <Link
               to="/profile"
               activeProps={activeProps}
@@ -45,7 +45,7 @@ export default function Header() {
               Login
             </Link>
           )}
-          {isLogged() && (
+          {isAuthenticated && (
             <div className="flex gap-4 items-center ml-auto">
               <Avatar
                 src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
