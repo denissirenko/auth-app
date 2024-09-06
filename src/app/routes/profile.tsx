@@ -1,5 +1,23 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Heading } from "@radix-ui/themes";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/profile")({
-  component: () => <div>Profile</div>,
+  beforeLoad: ({ context }) => {
+    const { isLogged } = context.authentication;
+    if (!isLogged()) {
+      throw redirect({
+        to: "/login",
+      });
+    }
+  },
+  component: () => (
+    <>
+      <Heading as="h1" align="center">
+        Profile
+      </Heading>
+      <Heading as="h2" align="center">
+        Hello world!!!
+      </Heading>
+    </>
+  ),
 });
