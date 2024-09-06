@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useAuth } from "../hooks/useAuth";
+import { useNavigate } from "@tanstack/react-router";
 
 const schema = yup.object().shape({
   username: yup.string().required("Login is required"),
@@ -29,6 +30,7 @@ const SignUpForm: React.FC = () => {
   });
 
   const { signIn } = useAuth();
+  const navigate = useNavigate({ from: "/login" });
 
   const onSubmit = (data: { username: string; password: string }) => {
     const { username, password } = data;
@@ -36,6 +38,7 @@ const SignUpForm: React.FC = () => {
     if (username === "admin" && password === "Test1234!") {
       setErrorMessage("");
       signIn();
+      navigate({ to: "/profile" });
     } else {
       setErrorMessage("This user does not exist");
     }
