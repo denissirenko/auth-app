@@ -1,6 +1,5 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
-import SignUpForm from "../../shared/components/signUpForm";
-import { Heading } from "@radix-ui/themes";
+import LoginPage from "../../pages/login";
 
 export const Route = createFileRoute("/login")({
   beforeLoad: ({ context }) => {
@@ -11,12 +10,5 @@ export const Route = createFileRoute("/login")({
       });
     }
   },
-  component: () => (
-    <>
-      <Heading as="h1" align="center">
-        Login
-      </Heading>
-      <SignUpForm />
-    </>
-  ),
+  component: () => <LoginPage />,
 });

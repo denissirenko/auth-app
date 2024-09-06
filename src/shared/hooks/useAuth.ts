@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { container } from "tsyringe";
-import { AuthService } from "../../core/services/AuthService";
+import { AuthService } from "../../features/auth/services/AuthService";
 
 export const useAuth = () => {
   const authService = container.resolve(AuthService);

@@ -1,5 +1,5 @@
-import { Heading } from "@radix-ui/themes";
 import { createFileRoute, redirect } from "@tanstack/react-router";
+import ProfilePage from "../../pages/profile";
 
 export const Route = createFileRoute("/profile")({
   beforeLoad: ({ context }) => {
@@ -10,14 +10,5 @@ export const Route = createFileRoute("/profile")({
       });
     }
   },
-  component: () => (
-    <>
-      <Heading as="h1" align="center">
-        Profile
-      </Heading>
-      <Heading as="h2" align="center">
-        Hello world!!!
-      </Heading>
-    </>
-  ),
+  component: () => <ProfilePage />,
 });

@@ -1,11 +1,13 @@
-import { Link } from "@tanstack/react-router";
 import Container from "./container";
 import { useAuth } from "../hooks/useAuth";
-import { Avatar, Button } from "@radix-ui/themes";
+import NavLink from "./navLink";
+import AuthLinks from "./authLinks";
+import UserProfile from "./userProfile";
 
-const activeProps = {
-  style: { textDecoration: "underline", color: "#3E63DD" },
-};
+const menuItems = [
+  { to: "/", label: "Home" },
+  { to: "/about", label: "About" },
+];
 
 export default function Header() {
   const { isAuthenticated, signOut } = useAuth();
@@ -14,46 +16,13 @@ export default function Header() {
     <header>
       <Container>
         <nav className="flex gap-4 items-center">
-          <Link
-            to="/"
-            activeProps={activeProps}
-            className="hover:text-blue-700"
-          >
-            Home
-          </Link>
-          <Link
-            to="/about"
-            activeProps={activeProps}
-            className="hover:text-blue-700"
-          >
-            About
-          </Link>
-          {isAuthenticated ? (
-            <Link
-              to="/profile"
-              activeProps={activeProps}
-              className="hover:text-blue-700"
-            >
-              Profile
-            </Link>
-          ) : (
-            <Link
-              className="ml-auto hover:text-blue-700"
-              to="/login"
-              activeProps={activeProps}
-            >
-              Login
-            </Link>
-          )}
-          {isAuthenticated && (
-            <div className="flex gap-4 items-center ml-auto">
-              <Avatar
-                src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
-                fallback="A"
-              />
-              <Button onClick={signOut}>Sign Out</Button>
-            </div>
-          )}
+          {menuItems.map((item) => (
+            <NavLink key={item.to} to={item.to}>
+              {item.label}
+            </NavLink>
+          ))}
+          <AuthLinks isAuthenticated={isAuthenticated} />
+          {isAuthenticated && <UserProfile signOut={signOut} />}
         </nav>
       </Container>
     </header>
