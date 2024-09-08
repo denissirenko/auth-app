@@ -7,7 +7,7 @@ The form is located on the login page.
 - Login:
 
 ```js
-admin;
+admin
 ```
 
 - Password:
