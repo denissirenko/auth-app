@@ -1,6 +1,6 @@
-import * as Form from "@radix-ui/react-form";
-import { TextField } from "@radix-ui/themes";
-import { FieldError } from "react-hook-form";
+import * as Form from '@radix-ui/react-form';
+import { TextField } from '@radix-ui/themes';
+import { FieldError } from 'react-hook-form';
 
 interface FormFieldProps {
   name: string;
@@ -8,20 +8,23 @@ interface FormFieldProps {
   type: string;
   register: any;
   error?: FieldError;
+  dataTestid: string;
 }
 
-const FormField: React.FC<FormFieldProps> = ({
+const FormField = ({
   name,
   label,
   type,
   register,
   error,
-}) => (
+  dataTestid,
+}: FormFieldProps) => (
   <Form.Field name={name} className="mb-4">
     <Form.Label className="block mb-2 text-sm font-medium" htmlFor={name}>
       {label}
     </Form.Label>
     <TextField.Root
+      data-testid={dataTestid}
       id={name}
       {...register(name)}
       type={type}

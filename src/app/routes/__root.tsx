@@ -2,10 +2,10 @@ import {
   Outlet,
   Link,
   createRootRouteWithContext,
-} from "@tanstack/react-router";
-import { Heading } from "@radix-ui/themes";
-import MainLayout from "../../shared/layouts/mainLayout";
-import { AuthContext } from "../../shared/hooks/useAuth";
+} from '@tanstack/react-router';
+import { Heading } from '@radix-ui/themes';
+import MainLayout from '../../shared/layouts/mainLayout';
+import { AuthContext } from '../../shared/hooks/useAuth';
 
 type RouterContext = {
   authentication: AuthContext;

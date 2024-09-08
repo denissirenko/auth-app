@@ -1,19 +1,19 @@
-import { BehaviorSubject } from "rxjs";
-import { singleton } from "tsyringe";
+import { BehaviorSubject } from 'rxjs';
+import { singleton } from 'tsyringe';
 
 @singleton()
 export class AuthService {
   private isAuthenticatedSubject = new BehaviorSubject<string | null>(
-    localStorage.getItem("isAuthenticated") || null
+    localStorage.getItem('isAuthenticated') || null,
   );
 
   signIn() {
-    localStorage.setItem("isAuthenticated", "true");
-    this.isAuthenticatedSubject.next("true");
+    localStorage.setItem('isAuthenticated', 'true');
+    this.isAuthenticatedSubject.next('true');
   }
 
   signOut() {
-    localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem('isAuthenticated');
     this.isAuthenticatedSubject.next(null);
   }
 

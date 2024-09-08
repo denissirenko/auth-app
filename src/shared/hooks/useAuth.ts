@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import { container } from "tsyringe";
-import { AuthService } from "../../features/auth/services/AuthService";
+import 'reflect-metadata';
+import { useEffect, useState } from 'react';
+import { container } from 'tsyringe';
+import { AuthService } from '../../features/auth/services/AuthService';
 
 export const useAuth = () => {
   const authService = container.resolve(AuthService);

@@ -1,4 +1,4 @@
-import { Avatar, Button } from "@radix-ui/themes";
+import { Avatar, Button } from '@radix-ui/themes';
 
 interface UserProfileProps {
   signOut: () => void;

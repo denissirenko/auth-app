@@ -1,5 +1,5 @@
-import Container from "./container";
-import { Text } from "@radix-ui/themes";
+import Container from './container';
+import { Text } from '@radix-ui/themes';
 
 export default function Footer() {
   return (

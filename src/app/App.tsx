@@ -1,7 +1,7 @@
-import { createRouter, RouterProvider } from "@tanstack/react-router";
-import { routeTree } from "./routeTree.gen";
-import { Theme } from "@radix-ui/themes";
-import { useAuth } from "../shared/hooks/useAuth";
+import { createRouter, RouterProvider } from '@tanstack/react-router';
+import { routeTree } from './routeTree.gen';
+import { Theme } from '@radix-ui/themes';
+import { useAuth } from '../shared/hooks/useAuth';
 
 function App() {
   const authentication = useAuth();

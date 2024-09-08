@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import * as Form from "@radix-ui/react-form";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useAuth } from "../../../shared/hooks/useAuth";
-import { useNavigate } from "@tanstack/react-router";
-import FormField from "../../../shared/components/formField";
-import ErrorMessage from "../../../shared/components/errorMessage";
-import { LoginSchema } from "../../../core/utils/validations";
+import { useState } from 'react';
+import * as Form from '@radix-ui/react-form';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useAuth } from '../../../shared/hooks/useAuth';
+import { useNavigate } from '@tanstack/react-router';
+import FormField from '../../../shared/components/formField';
+import ErrorMessage from '../../../shared/components/errorMessage';
+import { LoginSchema } from '../../../core/utils/validations';
 
-const SignUpForm: React.FC = () => {
-  const [errorMessage, setErrorMessage] = useState("");
+const SignUpForm = () => {
+  const [errorMessage, setErrorMessage] = useState('');
   const {
     register,
     handleSubmit,
@@ -19,16 +19,16 @@ const SignUpForm: React.FC = () => {
   });
 
   const { signIn } = useAuth();
-  const navigate = useNavigate({ from: "/login" });
+  const navigate = useNavigate({ from: '/login' });
 
   const onSubmit = (data: { username: string; password: string }) => {
     const { username, password } = data;
-    if (username === "admin" && password === "Test1234!") {
-      setErrorMessage("");
+    if (username === 'admin' && password === 'Test1234!') {
+      setErrorMessage('');
       signIn();
-      navigate({ to: "/profile" });
+      navigate({ to: '/profile' });
     } else {
-      setErrorMessage("This user does not exist");
+      setErrorMessage('This user does not exist');
     }
   };
 
@@ -40,6 +40,7 @@ const SignUpForm: React.FC = () => {
       <h2 className="text-2xl font-bold mb-6 text-center">Registration</h2>
 
       <FormField
+        dataTestid="username"
         name="username"
         label="Login"
         type="text"
@@ -48,6 +49,7 @@ const SignUpForm: React.FC = () => {
       />
 
       <FormField
+        dataTestid="password"
         name="password"
         label="Password"
         type="password"
@@ -59,6 +61,7 @@ const SignUpForm: React.FC = () => {
 
       <Form.Submit asChild>
         <button
+          data-testid="sign-up-btn"
           type="submit"
           className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors"
         >
